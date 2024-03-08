@@ -1,0 +1,16 @@
+numpy
+pandas
+plotly
+schedule
+sklearn
+scikit-learn
+scipy
+seaborn
+shap
+joblib
+streamlit
+streamlit-option-menu
+matplotlib
+altair
+pil
+graphviz
