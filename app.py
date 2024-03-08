@@ -207,21 +207,40 @@ tipos_de_dato = {
     "MTRANS": "category"
 }
 
+diccionario = {
+    "Gender": "Gender",
+    "Age": "Age",
+    "Height": "Height",
+    "family_history_with_overweight": "family_history_with_overweight",
+    "FAVC": "Frequency of consumption of high calorie foods (FAVC)",
+    "FCVC": "Frequency of consumption of vegetables (FCVC)",
+    "NCP": "Number of main meals (NCP)",
+    "CAEC": "Consumption of food between meals (CAEC)",
+    "SMOKE": "SMOKE?",
+    "CH2O": "Consumption of water (CH2O)",
+    "SCC": "Calories consumption monitoring (SCC)",
+    "FAF": "Physical activity frequency (FAF)",
+    "TUE": "Time using tech devices (TUE)",
+    "CALC": "Consumption of Alcohol (CALC)",
+    "MTRANS": "transportation (MTRANS)"
+}
+
 # Crear un diccionario con componentes Streamlit correspondientes a cada columna
 with st.expander("Herramienta de prediccion"):
-      componentes_por_columna = {}
-      for columna, tipo_dato in tipos_de_dato.items():
-          if tipo_dato == float:
-                componente = st.number_input(label=columna)
-          elif tipo_dato == "category":
-                valores_posibles = data_cluster[columna].unique()
-                componente = st.selectbox(label=columna, options=valores_posibles)
-          else:
-              raise ValueError(f"Tipo de dato no soportado para la columna {columna}")
-          componentes_por_columna[columna] = componente
+    componentes_por_columna = {}
+    for columna, tipo_dato in tipos_de_dato.items():
+        nombre_largo = diccionario[columna]  # Obtener el nombre largo desde el diccionario
+        if tipo_dato == float:
+            componente = st.number_input(label=nombre_largo)
+        elif tipo_dato == "category":
+            valores_posibles = data_cluster[columna].unique()
+            componente = st.selectbox(label=nombre_largo, options=valores_posibles)
+        else:
+            raise ValueError(f"Tipo de dato no soportado para la columna {columna}")
+        componentes_por_columna[columna] = componente
 
-      modelo= joblib.load("mejor_normal.joblib")
-      if st.button("Generar Prediccion"):
+    modelo= joblib.load("mejor_normal.joblib")
+    if st.button("Generar Prediccion"):
           datos = {}
           for columna, componente in componentes_por_columna.items():
               datos[columna] = componente
