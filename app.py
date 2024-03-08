@@ -27,7 +27,7 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 
 
 # Cargar los datos
-data = pd.read_csv("/content/ObesityDataSet.csv")
+data = pd.read_csv("ObesityDataSet.csv")
 data_cluster = pd.read_csv("/content/ObesityCluster.csv")
 
 
