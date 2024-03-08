@@ -28,7 +28,7 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 
 # Cargar los datos
 data = pd.read_csv("ObesityDataSet.csv")
-data_cluster = pd.read_csv("/content/ObesityCluster.csv")
+data_cluster = pd.read_csv("ObesityCluster.csv")
 
 
 full_form = dict({'FAVC' : "Frequent consumption of high caloric food",
