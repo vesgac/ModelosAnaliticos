@@ -153,6 +153,7 @@ clf = DecisionTreeClassifier(max_depth=3)
 
 # Separar las características y las etiquetas
 X = data.drop(target, axis=1)  # Ajusta 'etiqueta' al nombre real de la columna de etiquetas
+X = data.drop('Weight', axis=1)
 y = data[target]
 
 X = pd.get_dummies(X)
