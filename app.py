@@ -276,7 +276,7 @@ with st.expander("Herramienta de prediccion"):
           st.title(f"Clase predicha: {predicted_class_name}")
 
           # Crear un gráfico SHAP utilizando shap.force_plot
-          force_plot_fig = shap.force_plot(explainer.expected_value[pred[0]], shap_values[pred[0]][0], X_predict.values[0], feature_names=X_predict.columns, matplotlib=True)
+          force_plot_fig = shap.force_plot(explainer.expected_value[pred[0]], shap_values[0, :, pred[0]], X_predict.values[0], feature_names=X_predict.columns, matplotlib=True)
 
           # Muestra el gráfico SHAP en el dashboard
           st.pyplot(force_plot_fig)
